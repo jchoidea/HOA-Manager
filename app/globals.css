@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: #2f4a3e;
+  color: #fafaf7;
+}
+
+a {
+  text-underline-offset: 3px;
+}
