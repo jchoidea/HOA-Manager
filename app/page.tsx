@@ -5,7 +5,7 @@ export default function HomePage() {
     <main>
       <header className="border-b border-hairline">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
-          <span className="font-display text-lg tracking-tight">Cascade Community Management</span>
+          <span className="font-display text-lg tracking-tight">Orchard Terrace Condominium</span>
           <nav className="flex items-center gap-6 text-sm">
             <Link href="/pay" className="rounded-full bg-evergreen px-4 py-2 text-paper transition-colors hover:bg-evergreen-dark">
               Pay dues
@@ -16,13 +16,12 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-5xl px-6 pb-20 pt-20 md:pt-28">
         <h1 className="max-w-2xl font-display text-4xl leading-tight text-ink md:text-5xl">
-          Twelve homes. One well-run community.
+          A twelve-unit condominium community in Bellevue, Washington.
         </h1>
         <p className="mt-6 max-w-prose text-lg leading-relaxed text-ink/70">
-          We handle the dues, the vendors, and the details, so the community runs
-          smoothly and every owner knows exactly where things stand. Based in
-          Washington, working for the twelve units we manage as if they were
-          our own.
+          Orchard Terrace Condominium Homeowners Association collects monthly
+          dues, coordinates vendors, and maintains shared spaces on behalf of
+          its twelve unit owners. Managed by Quartz Property Group.
         </p>
         <div className="mt-9 flex items-center gap-5">
           <Link
@@ -43,8 +42,8 @@ export default function HomePage() {
             <div>
               <h2 className="font-display text-xl">Dues, handled</h2>
               <p className="mt-3 text-sm leading-relaxed text-ink/70">
-                Owners pay online by card or bank transfer. Payments are tracked
-                automatically, and a $50 late fee applies if dues aren't received
+                Pay online by card or bank transfer. Payments are tracked
+                automatically, and a late fee applies if dues aren't received
                 within 15 days of the due date — clearly, consistently, every time.
               </p>
             </div>
@@ -75,15 +74,15 @@ export default function HomePage() {
           reach out and we'll get back to you within one business day.
         </p>
         <div className="mt-6 space-y-1 text-sm text-ink/80">
-          <p>info@cascadecommunitymanagement.com</p>
-          <p>(206) 555-0148</p>
-          <p>Serving Washington State</p>
+          <p>Orchard Terrace Condominium Homeowners Association</p>
+          <p>12406 SE 31st St, Bellevue, WA 98005</p>
+          <p>Managed by Quartz Property Group</p>
         </div>
       </section>
 
       <footer className="border-t border-hairline">
         <div className="mx-auto max-w-5xl px-6 py-8 text-xs text-ink/50">
-          © {new Date().getFullYear()} Cascade Community Management. All rights reserved.
+          © {new Date().getFullYear()} Quartz Property Group. All rights reserved.
         </div>
       </footer>
     </main>
