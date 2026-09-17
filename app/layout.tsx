@@ -16,8 +16,8 @@ const plexSans = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Orchard Terrace Condominium",
-  description: "Managed by Quartz Property Group — dues, maintenance, and vendor coordination for Orchard Terrace Condominium Homeowners Association.",
+  title: "Quartz Property Group",
+  description: "Condominium and HOA management across the Pacific Northwest and beyond.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
