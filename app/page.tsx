@@ -7,8 +7,12 @@ export default function HomePage() {
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
           <span className="font-display text-lg tracking-tight">Quartz Property Group</span>
           <nav className="flex items-center gap-6 text-sm">
-            <a href="#properties" className="text-ink/70 hover:text-ink">Properties</a>
+            <a href="#about" className="text-ink/70 hover:text-ink">About</a>
+            <a href="#services" className="text-ink/70 hover:text-ink">Services</a>
             <a href="#contact" className="text-ink/70 hover:text-ink">Contact</a>
+            <Link href="/pay" className="rounded-full bg-evergreen px-4 py-2 text-paper transition-colors hover:bg-evergreen-dark">
+              Pay dues
+            </Link>
           </nav>
         </div>
       </header>
@@ -24,74 +28,71 @@ export default function HomePage() {
           boards and owners can focus on their community, not the
           administrative load behind it.
         </p>
+        <div className="mt-9">
+          <Link
+            href="/pay"
+            className="rounded-full bg-evergreen px-6 py-3 text-sm font-medium text-paper transition-colors hover:bg-evergreen-dark"
+          >
+            Pay your monthly dues
+          </Link>
+        </div>
       </section>
 
-      <section id="properties" className="border-t border-hairline bg-stone">
+      <section id="about" className="border-t border-hairline bg-stone">
         <div className="mx-auto max-w-5xl px-6 py-16">
-          <h2 className="font-display text-2xl">Properties we manage</h2>
-          <p className="mt-2 max-w-prose text-sm text-ink/70">
-            Each community we work with keeps its own dedicated dues
-            collection and financial records, kept fully separate from every
-            other association we manage.
+          <h2 className="font-display text-2xl">About us</h2>
+          <p className="mt-4 max-w-prose text-sm leading-relaxed text-ink/70">
+            We are dedicated to consistently providing high-quality
+            comprehensive management, accounting, and vendor coordination
+            services. Through our commitment to owners, boards, and clear
+            communication, we strive to lead the way in providing value to
+            the communities we serve.
           </p>
+        </div>
+      </section>
 
-          <div className="mt-8 grid gap-5">
-            <Link
-              href="/orchard-terrace"
-              className="block rounded-lg border border-hairline bg-paper p-6 transition-colors hover:border-evergreen"
-            >
-              <h3 className="font-display text-lg">Orchard Terrace Condominium</h3>
-              <p className="mt-1 text-xs text-ink/50">Bellevue, Washington</p>
-              <p className="mt-3 text-sm text-ink/70">
-                A twelve-unit condominium community. Pay dues, view association
-                info, and more.
-              </p>
-              <span className="mt-4 inline-block text-sm font-medium text-evergreen-dark">
-                View property →
-              </span>
-            </Link>
-
-            <Link
-              href="/cordova-square"
-              className="block rounded-lg border border-hairline bg-paper p-6 transition-colors hover:border-evergreen"
-            >
-              <h3 className="font-display text-lg">Cordova Square Condominiums</h3>
-              <p className="mt-1 text-xs text-ink/50">Anchorage, Alaska</p>
-              <p className="mt-3 text-sm text-ink/70">
-                A 141-unit condominium community in Anchorage's Fairview
-                neighborhood.
-              </p>
-              <span className="mt-4 inline-block text-sm font-medium text-evergreen-dark">
-                View property →
-              </span>
-            </Link>
-
-            <Link
-              href="/park-place"
-              className="block rounded-lg border border-hairline bg-paper p-6 transition-colors hover:border-evergreen"
-            >
-              <h3 className="font-display text-lg">Park Place Condominiums</h3>
-              <p className="mt-1 text-xs text-ink/50">Anchorage, Alaska</p>
-              <p className="mt-3 text-sm text-ink/70">
-                A 98-unit condominium community in Anchorage's South Addition
-                neighborhood.
-              </p>
-              <span className="mt-4 inline-block text-sm font-medium text-evergreen-dark">
-                View property →
-              </span>
-            </Link>
+      <section id="services" className="mx-auto max-w-5xl px-6 py-16">
+        <h2 className="font-display text-2xl">Services</h2>
+        <div className="mt-8 grid gap-12 md:grid-cols-3">
+          <div>
+            <h3 className="font-display text-xl">Dues, handled</h3>
+            <p className="mt-3 text-sm leading-relaxed text-ink/70">
+              Owners pay online by card or bank transfer. Payments are
+              tracked automatically, and a late fee applies if dues aren't
+              received within 15 days of the due date — clearly,
+              consistently, every time.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-display text-xl">Vendors, coordinated</h3>
+            <p className="mt-3 text-sm leading-relaxed text-ink/70">
+              Landscaping, repairs, insurance — every vendor bill is logged
+              and tracked from invoice to payment, so nothing falls through
+              the cracks and the books stay clean.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-display text-xl">Records, open</h3>
+            <p className="mt-3 text-sm leading-relaxed text-ink/70">
+              Every owner can see their own payment history at a glance. No
+              surprises, no digging through email threads to find out what's
+              owed.
+            </p>
           </div>
         </div>
       </section>
 
-      <section id="contact" className="mx-auto max-w-5xl px-6 py-16">
-        <h2 className="font-display text-2xl">Get in touch</h2>
-        <p className="mt-3 max-w-prose text-sm leading-relaxed text-ink/70">
-          Questions about an account, a maintenance request, or anything else —
-          reach out and we'll get back to you within one business day.
-        </p>
-        <div className="mt-6 space-y-1 text-sm text-ink/80">
-          <p>Serving the Pacific Northwest and beyond</p>
+      <section id="contact" className="border-t border-hairline bg-stone">
+        <div className="mx-auto max-w-5xl px-6 py-16">
+          <h2 className="font-display text-2xl">Get in touch</h2>
+          <p className="mt-3 max-w-prose text-sm leading-relaxed text-ink/70">
+            Questions about your account, a maintenance request, or anything
+            else — reach out and we'll get back to you within one business
+            day.
+          </p>
+          <div className="mt-6 space-y-1 text-sm text-ink/80">
+            <p>Serving the Pacific Northwest and beyond</p>
+          </div>
         </div>
       </section>
 
