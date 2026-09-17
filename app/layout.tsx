@@ -16,8 +16,8 @@ const plexSans = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Cascade Community Management",
-  description: "Property management for your community — dues, maintenance, and vendor coordination.",
+  title: "Orchard Terrace Condominium",
+  description: "Managed by Quartz Property Group — dues, maintenance, and vendor coordination for Orchard Terrace Condominium Homeowners Association.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
