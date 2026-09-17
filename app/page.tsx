@@ -91,6 +91,7 @@ export default function HomePage() {
             day.
           </p>
           <div className="mt-6 space-y-1 text-sm text-ink/80">
+            <p>info@quartzpropertygroup.com</p>
             <p>Serving the Pacific Northwest and beyond</p>
           </div>
         </div>
