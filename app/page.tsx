@@ -5,64 +5,81 @@ export default function HomePage() {
     <main>
       <header className="border-b border-hairline">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
-          <span className="font-display text-lg tracking-tight">Orchard Terrace Condominium</span>
+          <span className="font-display text-lg tracking-tight">Quartz Property Group</span>
           <nav className="flex items-center gap-6 text-sm">
-            <Link href="/pay" className="rounded-full bg-evergreen px-4 py-2 text-paper transition-colors hover:bg-evergreen-dark">
-              Pay dues
-            </Link>
+            <a href="#properties" className="text-ink/70 hover:text-ink">Properties</a>
+            <a href="#contact" className="text-ink/70 hover:text-ink">Contact</a>
           </nav>
         </div>
       </header>
 
       <section className="mx-auto max-w-5xl px-6 pb-20 pt-20 md:pt-28">
         <h1 className="max-w-2xl font-display text-4xl leading-tight text-ink md:text-5xl">
-          A twelve-unit condominium community in Bellevue, Washington.
+          Community management built around clarity, not paperwork.
         </h1>
         <p className="mt-6 max-w-prose text-lg leading-relaxed text-ink/70">
-          Orchard Terrace Condominium Homeowners Association collects monthly
-          dues, coordinates vendors, and maintains shared spaces on behalf of
-          its twelve unit owners. Managed by Quartz Property Group.
+          Quartz Property Group manages condominium and homeowners'
+          associations across the Pacific Northwest and beyond — handling
+          dues collection, vendor coordination, and day-to-day operations so
+          boards and owners can focus on their community, not the
+          administrative load behind it.
         </p>
-        <div className="mt-9 flex items-center gap-5">
-          <Link
-            href="/pay"
-            className="rounded-full bg-evergreen px-6 py-3 text-sm font-medium text-paper transition-colors hover:bg-evergreen-dark"
-          >
-            Pay your monthly dues
-          </Link>
-          <a href="#contact" className="text-sm font-medium text-ink underline decoration-hairline underline-offset-4 hover:decoration-ink">
-            Get in touch
-          </a>
-        </div>
       </section>
 
-      <section className="border-t border-hairline bg-stone">
+      <section id="properties" className="border-t border-hairline bg-stone">
         <div className="mx-auto max-w-5xl px-6 py-16">
-          <div className="grid gap-12 md:grid-cols-3">
-            <div>
-              <h2 className="font-display text-xl">Dues, handled</h2>
-              <p className="mt-3 text-sm leading-relaxed text-ink/70">
-                Pay online by card or bank transfer. Payments are tracked
-                automatically, and a late fee applies if dues aren't received
-                within 15 days of the due date — clearly, consistently, every time.
+          <h2 className="font-display text-2xl">Properties we manage</h2>
+          <p className="mt-2 max-w-prose text-sm text-ink/70">
+            Each community we work with keeps its own dedicated dues
+            collection and financial records, kept fully separate from every
+            other association we manage.
+          </p>
+
+          <div className="mt-8 grid gap-5">
+            <Link
+              href="/orchard-terrace"
+              className="block rounded-lg border border-hairline bg-paper p-6 transition-colors hover:border-evergreen"
+            >
+              <h3 className="font-display text-lg">Orchard Terrace Condominium</h3>
+              <p className="mt-1 text-xs text-ink/50">Bellevue, Washington</p>
+              <p className="mt-3 text-sm text-ink/70">
+                A twelve-unit condominium community. Pay dues, view association
+                info, and more.
               </p>
-            </div>
-            <div>
-              <h2 className="font-display text-xl">Vendors, coordinated</h2>
-              <p className="mt-3 text-sm leading-relaxed text-ink/70">
-                Landscaping, repairs, insurance — every vendor bill is logged and
-                tracked from invoice to payment, so nothing falls through the
-                cracks and the books stay clean.
+              <span className="mt-4 inline-block text-sm font-medium text-evergreen-dark">
+                View property →
+              </span>
+            </Link>
+
+            <Link
+              href="/cordova-square"
+              className="block rounded-lg border border-hairline bg-paper p-6 transition-colors hover:border-evergreen"
+            >
+              <h3 className="font-display text-lg">Cordova Square Condominiums</h3>
+              <p className="mt-1 text-xs text-ink/50">Anchorage, Alaska</p>
+              <p className="mt-3 text-sm text-ink/70">
+                A 141-unit condominium community in Anchorage's Fairview
+                neighborhood.
               </p>
-            </div>
-            <div>
-              <h2 className="font-display text-xl">Records, open</h2>
-              <p className="mt-3 text-sm leading-relaxed text-ink/70">
-                Every owner can see their own payment history at a glance. No
-                surprises, no digging through email threads to find out what's
-                owed.
+              <span className="mt-4 inline-block text-sm font-medium text-evergreen-dark">
+                View property →
+              </span>
+            </Link>
+
+            <Link
+              href="/park-place"
+              className="block rounded-lg border border-hairline bg-paper p-6 transition-colors hover:border-evergreen"
+            >
+              <h3 className="font-display text-lg">Park Place Condominiums</h3>
+              <p className="mt-1 text-xs text-ink/50">Anchorage, Alaska</p>
+              <p className="mt-3 text-sm text-ink/70">
+                A 98-unit condominium community in Anchorage's South Addition
+                neighborhood.
               </p>
-            </div>
+              <span className="mt-4 inline-block text-sm font-medium text-evergreen-dark">
+                View property →
+              </span>
+            </Link>
           </div>
         </div>
       </section>
@@ -70,13 +87,11 @@ export default function HomePage() {
       <section id="contact" className="mx-auto max-w-5xl px-6 py-16">
         <h2 className="font-display text-2xl">Get in touch</h2>
         <p className="mt-3 max-w-prose text-sm leading-relaxed text-ink/70">
-          Questions about your account, a maintenance request, or anything else —
+          Questions about an account, a maintenance request, or anything else —
           reach out and we'll get back to you within one business day.
         </p>
         <div className="mt-6 space-y-1 text-sm text-ink/80">
-          <p>Orchard Terrace Condominium Homeowners Association</p>
-          <p>12406 SE 31st St, Bellevue, WA 98005</p>
-          <p>Managed by Quartz Property Group</p>
+          <p>Serving the Pacific Northwest and beyond</p>
         </div>
       </section>
 
