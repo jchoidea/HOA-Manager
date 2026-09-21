@@ -40,6 +40,7 @@ type Settings = {
   grace_period_days: number;
   due_day_of_month: number;
   company_name: string;
+  card_convenience_fee_cents: number;
 };
 
 const money = (cents: number) => `$${(cents / 100).toFixed(2)}`;
