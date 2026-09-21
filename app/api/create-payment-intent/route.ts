@@ -2,15 +2,18 @@ import { NextRequest, NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabase";
 
-// Called from the /pay page once the owner picks their unit.
-// Creates (or reuses) a Stripe Customer for the unit, finds their oldest
-// unpaid dues charge, and returns a PaymentIntent client secret so the
-// browser can collect card or ACH bank details via Stripe Elements.
+// Called from the /pay page AFTER the resident has already seen both totals
+// (via /api/lookup-balance) and picked a method. The amount and allowed
+// payment method are both locked in server-side based on that choice, so
+// the card convenience fee can never be silently added or skipped.
 export async function POST(req: NextRequest) {
   try {
-    const { unitNumber } = await req.json();
+    const { unitNumber, method } = await req.json();
     if (!unitNumber) {
       return NextResponse.json({ error: "Unit number is required." }, { status: 400 });
+    }
+    if (method !== "card" && method !== "ach") {
+      return NextResponse.json({ error: "A payment method (card or ach) is required." }, { status: 400 });
     }
 
     const db = supabaseAdmin();
@@ -26,7 +29,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "We couldn't find that unit. Check the number and try again." }, { status: 404 });
     }
 
-    // Find the oldest unpaid or late charge for this unit
     const { data: charge, error: chargeError } = await db
       .from("dues_charges")
       .select("*")
@@ -41,15 +43,22 @@ export async function POST(req: NextRequest) {
     }
 
     if (!charge) {
-      return NextResponse.json({ error: "No balance due — you're all paid up." }, { status: 200 });
+      return NextResponse.json({ noBalance: true });
     }
 
-    const amountDue = charge.amount_due_cents + (charge.late_fee_applied_cents || 0);
+    const { data: settings } = await db.from("settings").select("*").eq("id", 1).single();
+    const cardFeeCents = settings?.card_convenience_fee_cents ?? 1000;
+
+    const baseAmount = charge.amount_due_cents + (charge.late_fee_applied_cents || 0);
+    // The convenience fee applies only when the resident chose "card" — it's
+    // a flat fee for using the card payment channel at all (credit or
+    // debit alike), never conditioned on the card being specifically a
+    // credit card. That distinction is what keeps this clear of the
+    // federal ban on debit card surcharging.
+    const amountDue = method === "card" ? baseAmount + cardFeeCents : baseAmount;
 
     const stripeClient = stripe();
 
-    // Reuse or create a Stripe Customer for this unit so repeat payments
-    // (and future ACH mandates) are tied to the same customer record.
     let customerId = unit.stripe_customer_id as string | null;
     if (!customerId) {
       const customer = await stripeClient.customers.create({
@@ -65,11 +74,15 @@ export async function POST(req: NextRequest) {
       amount: amountDue,
       currency: "usd",
       customer: customerId,
-      payment_method_types: ["card", "us_bank_account"],
+      // Restricted to exactly the one method the resident chose — this is
+      // what makes the fee enforceable rather than optional at checkout.
+      payment_method_types: method === "card" ? ["card"] : ["us_bank_account"],
       metadata: {
         unit_id: unit.id,
         unit_number: unit.unit_number,
         dues_charge_id: charge.id,
+        method,
+        card_fee_cents: method === "card" ? String(cardFeeCents) : "0",
       },
     });
 
@@ -79,6 +92,8 @@ export async function POST(req: NextRequest) {
       unitNumber: unit.unit_number,
       periodMonth: charge.period_month,
       lateFeeApplied: charge.late_fee_applied_cents || 0,
+      method,
+      cardFeeCents: method === "card" ? cardFeeCents : 0,
     });
   } catch (err: any) {
     console.error("create-payment-intent error", err);
