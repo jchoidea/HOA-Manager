@@ -86,7 +86,7 @@ export async function POST(req: NextRequest) {
     }
 
     case "update_settings": {
-      const { monthlyDuesCents, lateFeeCents, gracePeriodDays, dueDayOfMonth, companyName } = payload;
+      const { monthlyDuesCents, lateFeeCents, gracePeriodDays, dueDayOfMonth, companyName, cardConvenienceFeeCents } = payload;
       await db
         .from("settings")
         .update({
@@ -95,6 +95,7 @@ export async function POST(req: NextRequest) {
           grace_period_days: gracePeriodDays,
           due_day_of_month: dueDayOfMonth,
           company_name: companyName,
+          card_convenience_fee_cents: cardConvenienceFeeCents,
         })
         .eq("id", 1);
       break;
