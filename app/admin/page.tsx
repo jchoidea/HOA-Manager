@@ -429,6 +429,7 @@ function SettingsTab({ settings, runAction }: { settings: Settings; runAction: (
     lateFee: (settings.late_fee_cents / 100).toString(),
     gracePeriodDays: settings.grace_period_days.toString(),
     dueDayOfMonth: settings.due_day_of_month.toString(),
+    cardConvenienceFee: (settings.card_convenience_fee_cents / 100).toString(),
   });
 
   return (
@@ -443,6 +444,7 @@ function SettingsTab({ settings, runAction }: { settings: Settings; runAction: (
             lateFeeCents: Math.round(parseFloat(form.lateFee) * 100),
             gracePeriodDays: parseInt(form.gracePeriodDays, 10),
             dueDayOfMonth: parseInt(form.dueDayOfMonth, 10),
+            cardConvenienceFeeCents: Math.round(parseFloat(form.cardConvenienceFee) * 100),
           });
         }}
         className="mt-4 space-y-4"
@@ -494,6 +496,19 @@ function SettingsTab({ settings, runAction }: { settings: Settings; runAction: (
             onChange={(e) => setForm({ ...form, dueDayOfMonth: e.target.value })}
             className="mt-1 w-full rounded-md border border-hairline px-3 py-2 text-sm"
           />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-ink/80">Card convenience fee ($)</label>
+          <input
+            type="number"
+            step="0.01"
+            value={form.cardConvenienceFee}
+            onChange={(e) => setForm({ ...form, cardConvenienceFee: e.target.value })}
+            className="mt-1 w-full rounded-md border border-hairline px-3 py-2 text-sm"
+          />
+          <p className="mt-1 text-xs text-ink/50">
+            Flat fee added only when an owner pays by card. Bank transfer (ACH) stays free. Applies equally to debit and credit cards.
+          </p>
         </div>
         <button className="rounded-full bg-evergreen px-6 py-2.5 text-sm font-medium text-paper hover:bg-evergreen-dark">
           Save settings
