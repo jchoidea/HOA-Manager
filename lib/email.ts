@@ -17,7 +17,7 @@ function fromAddress() {
   // Defaults to Resend's shared testing address, which works immediately
   // with no domain setup. Once you verify your own domain in Resend,
   // set FROM_EMAIL to something like "dues@yourcompany.com" instead.
-  return process.env.FROM_EMAIL || "Cascade Community Management <onboarding@resend.dev>";
+  return process.env.FROM_EMAIL || "Quartz Property Group <onboarding@resend.dev>";
 }
 
 const money = (cents: number) => `$${(cents / 100).toFixed(2)}`;

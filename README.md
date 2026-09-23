@@ -1,4 +1,4 @@
-# Cascade Community Management — website + dues & bookkeeping system
+# Quartz Property Group — website + dues & bookkeeping system
 
 A small web app for managing a 12-unit community: a public site, an online
 dues payment portal (card + ACH), and an admin dashboard for tracking who's
